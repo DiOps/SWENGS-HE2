@@ -1,0 +1,10 @@
+.person-form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin: 3rem auto;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}

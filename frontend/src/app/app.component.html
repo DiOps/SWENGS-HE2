@@ -1,0 +1,17 @@
+<mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="expenseMenu">Expense</button>
+    <mat-menu #expenseMenu="matMenu">
+        <button mat-menu-item routerLink="expense-list">List
+            Expenses</button>
+        <button mat-menu-item routerLink="expense-form">Create
+            Expense</button>
+        <button mat-menu-item routerLink="person-list">List
+            Owners</button>
+        <button mat-menu-item routerLink="person-form">Create
+            Owner</button>
+    </mat-menu>
+    <app-logout></app-logout>
+</mat-toolbar>
+
+
+<router-outlet></router-outlet>

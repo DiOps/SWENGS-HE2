@@ -1,0 +1,54 @@
+<form [formGroup]="expenseFormGroup" class="expense-form">
+    <mat-form-field>
+        <input matInput type="text" placeholder="Title" formControlName="title" required>
+        <mat-hint align="end">The title of the expense</mat-hint>
+        <mat-error *ngIf="expenseFormGroup.controls.title.hasError('required')">Title is required</mat-error>
+        <mat-error *ngIf="expenseFormGroup.controls.title.hasError('pattern')">Only letters and spaces are allowed
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number" placeholder="Amount" formControlName="amount" required>
+        <mat-hint align="end">The amount of the expense</mat-hint>
+        <mat-error *ngIf="expenseFormGroup.controls.amount.hasError('required')">Amount is required</mat-error>
+        <mat-error *ngIf="expenseFormGroup.controls.amount.hasError('min')">Amount must be positive</mat-error>
+    </mat-form-field>
+
+    <app-date placeholder="Date" formControlName="date" hint="The date of the expense"></app-date>
+
+    <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        <mat-hint align="end">The description of the expense</mat-hint>
+        <mat-error *ngIf="expenseFormGroup.controls.description.hasError('badWord')">Description contains bad language
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Owner" formControlName="owner" required>
+            <!-- <mat-option [value]="null">Unknown</mat-option> -->
+            <mat-option [value]="ownerOption.id" *ngFor="let
+        ownerOption of ownerOptions">{{ownerOption.first_name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">The owner of the expense</mat-hint>
+        <mat-error *ngIf="expenseFormGroup.controls.owner.hasError('required')">Owner is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Category" formControlName="categories" multiple>
+            <mat-option [value]="categoryOption.id" *ngFor="let
+        categoryOption of categoryOptions">{{categoryOption.name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">The categories of the expense</mat-hint>
+    </mat-form-field>
+
+    <div>
+        <app-mediainput formControlName="pictures"></app-mediainput>
+    </div>
+    <br>
+    <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!expenseFormGroup.valid" (click)="saveExpense()">
+            <span *ngIf="!expenseFormGroup.controls.id.value">Create</span>
+            <span *ngIf="expenseFormGroup.controls.id.value">Update</span>
+        </button>
+    </mat-card-actions>
+</form>

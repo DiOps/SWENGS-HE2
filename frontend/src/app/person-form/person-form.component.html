@@ -1,0 +1,44 @@
+<form [formGroup]="personFormGroup" class="person-form">
+    <mat-form-field>
+        <input matInput type="text" placeholder="First Name" formControlName="first_name" required>
+        <mat-hint align="end">The first name of the expense</mat-hint>
+        <mat-error *ngIf="personFormGroup.controls.first_name.hasError('required')">First name is required</mat-error>
+        <!-- <mat-error *ngIf="personFormGroup.controls.title.hasError('titleAlreadyExists')">Title already exists</mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Last Name" formControlName="last_name" required>
+        <mat-hint align="end">The last name of the owner</mat-hint>
+        <mat-error *ngIf="personFormGroup.controls.last_name.hasError('required')">Last name is required</mat-error>
+        <!-- <mat-error *ngIf="personFormGroup.controls.last_name.hasError('lastNameAlreadyExists')">Last name already exists
+        </mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number" placeholder="Birthyear" formControlName="year_of_birth" required>
+        <mat-hint align="end">The birthyear of the expense</mat-hint>
+        <mat-error *ngIf="personFormGroup.controls.year_of_birth.hasError('required')">Birthyear is required
+        </mat-error>
+        <mat-error *ngIf="personFormGroup.controls.year_of_birth.hasError('max')">Birthyear cannot be in the future
+        </mat-error>
+    </mat-form-field>
+
+    <br>
+    <mat-checkbox formControlName="getsSalary">Does the owner receive a salary?</mat-checkbox>
+
+    <br>
+    <p>Select a job option:</p>
+    <mat-radio-group formControlName="job" labelPosition="before" aria-label="Select an option">
+        <mat-radio-button value="child">Child</mat-radio-button>
+        <mat-radio-button value="student">Student</mat-radio-button>
+        <mat-radio-button value="regularJob">9 to 5 Job</mat-radio-button>
+    </mat-radio-group>
+
+    <br>
+    <mat-card-actions align="center">
+        <button mat-raised-button color="primary" [disabled]="!personFormGroup.valid" (click)="savePerson()">
+            <span *ngIf="!personFormGroup.controls.id.value">Create</span>
+            <span *ngIf="personFormGroup.controls.id.value">Update</span>
+        </button>
+    </mat-card-actions>
+</form>
