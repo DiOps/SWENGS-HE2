@@ -1,0 +1,20 @@
+[
+  {
+    "model": "myexpenses.owner",
+    "pk": 1,
+    "fields": {
+      "first_name": "Bianca",
+      "last_name": "E.",
+      "year_of_birth": 1997
+    }
+  },
+  {
+    "model": "myexpenses.owner",
+    "pk": 2,
+    "fields": {
+      "first_name": "Felix",
+      "last_name": "S.",
+      "year_of_birth": 1998
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "model": "myexpenses.category",
+    "pk": 1,
+    "fields": {
+      "name": "Lebensmittel",
+      "description": ""
+    }
+  },
+  {
+    "model": "myexpenses.category",
+    "pk": 2,
+    "fields": {
+      "name": "Auto",
+      "description": ""
+    }
+  }
+]

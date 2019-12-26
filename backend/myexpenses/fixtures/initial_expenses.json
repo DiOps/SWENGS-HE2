@@ -1,0 +1,45 @@
+[
+    {
+        "model": "myexpenses.expense",
+        "pk": 1,
+        "fields": {
+            "title": "Spar Einkauf",
+            "date": "2019-12-24",
+            "description": "",
+            "amount": 30,
+            "owner": 1,
+            "categories": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "myexpenses.expense",
+        "pk": 2,
+        "fields": {
+            "title": "Tanken",
+            "date": "2019-12-23",
+            "description": "",
+            "amount": 50,
+            "owner": 2,
+            "categories": [
+                2
+            ]
+        }
+    },
+    {
+        "model": "myexpenses.expense",
+        "pk": 3,
+        "fields": {
+            "title": "Spar + Tanken",
+            "date": "2019-12-22",
+            "description": "",
+            "amount": 80,
+            "owner": 1,
+            "categories": [
+                1,
+                2
+            ]
+        }
+    }
+]
