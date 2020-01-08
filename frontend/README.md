@@ -1,3 +1,7 @@
+# Custom Validator
+If a person is created in person form component, it checks if the age is greater than 18,
+if so, child cannot be selected anymore. 
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.

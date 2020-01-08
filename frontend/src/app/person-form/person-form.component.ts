@@ -14,6 +14,7 @@ export class PersonFormComponent implements OnInit {
 
   personFormGroup: FormGroup;
   ownerOptions;
+  // notAdult;
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +33,8 @@ export class PersonFormComponent implements OnInit {
       job: ['']
     });
 
+    this.personFormGroup.setValidators(this.isAdult);
+
     const data = this.route.snapshot.data;
     this.ownerOptions = data.ownerOptions;
 
@@ -41,6 +44,7 @@ export class PersonFormComponent implements OnInit {
   }
 
   savePerson() {
+
     const person = this.personFormGroup.value;
 
     this.ownerService.createOwner(person).subscribe(
@@ -51,27 +55,17 @@ export class PersonFormComponent implements OnInit {
     );
   }
 
-  // nameNotTakenValidator(): AsyncValidatorFn {
-  //   return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
-  //     return this.ownerService.retrieveOwnerOptions()
-  //       .pipe(
-  //         map((owners: any[]) => {
-  //           const currentId = this.personFormGroup.controls.id.value;
-  //           const currentLastName = this.personFormGroup.controls.last_name.value;
-  //           const ownerWithSameLastName = owners.find((m) => {
-  //             console.log(m);
-  //             return m.id !== currentId && m.last_name === currentLastName;
-  //           });
-  //           if (currentId !== null && ownerWithSameLastName) {
-  //             console.log(ownerWithSameLastName);
-  //             return {
-  //               lastNameAlreadyExists: true
-  //             };
-  //           } else {
-  //             return null;
-  //           }
-  //         })
-  //       );
-  //   };
-  // }
+  // custom validator
+  isAdult(group: FormGroup): any {
+    const birthYear = group.value.year_of_birth;
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - birthYear;
+
+    if (age < 18 && group.value.job === 'child') {
+      console.log('in if');
+      return { notAdult: true };
+    } else {
+      return null;
+    }
+  }
 }

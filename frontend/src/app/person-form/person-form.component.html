@@ -33,6 +33,8 @@
         <mat-radio-button value="student">Student</mat-radio-button>
         <mat-radio-button value="regularJob">9 to 5 Job</mat-radio-button>
     </mat-radio-group>
+    <mat-error *ngIf="personFormGroup.hasError('notAdult')">Child can't be selected if age is greater than 18.
+    </mat-error>
 
     <br>
     <mat-card-actions align="center">
