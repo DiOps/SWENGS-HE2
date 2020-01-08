@@ -62,7 +62,6 @@ export class PersonFormComponent implements OnInit {
     const age = currentYear - birthYear;
 
     if (age < 18 && group.value.job === 'child') {
-      console.log('in if');
       return { notAdult: true };
     } else {
       return null;
